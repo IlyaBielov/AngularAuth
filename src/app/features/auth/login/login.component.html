@@ -1,0 +1,20 @@
+<mat-card class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Authorisation</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <app-input [control]="loginForm.controls['username']" label="User name"/>
+        <app-password [control]="loginForm.controls['password']" label="Password"/>
+      </mat-card-content>
+
+      <mat-card-footer>
+        <mat-card-actions>
+          <app-auth-btn [isLoading]="isLoading()" [isDisabled]="loginForm.invalid">Login</app-auth-btn>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card-content>
+  </form>
+</mat-card>

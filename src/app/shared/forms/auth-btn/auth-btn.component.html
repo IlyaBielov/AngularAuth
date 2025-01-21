@@ -1,0 +1,7 @@
+<button mat-stroked-button type="submit" [disabled]="isDisabled()">
+  @if (isLoading()) {
+    <mat-spinner [diameter]="20"/>
+  } @else {
+    <ng-content/>
+  }
+</button>
