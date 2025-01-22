@@ -2,6 +2,12 @@
 
 @use "assets/styles/base";
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   height: 100%;
 }
@@ -9,4 +15,9 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+main {
+  --header-size: 64px;
+  min-height: calc(100vh - var(--header-size));
 }
