@@ -5,7 +5,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { login } from '@state/auth/auth.actions';
 import { selectAuthError, selectIsLoadingAuth } from '@state/auth/auth.selectors';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 
 @Component({
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  isLoading = toSignal(this.store.select(selectIsLoadingAuth));
+  isLoading = this.store.selectSignal(selectIsLoadingAuth);
 
   ngOnInit() {
     this.store.select(selectAuthError)

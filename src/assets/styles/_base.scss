@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-tertiary),
+  ));
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.mat-mdc-form-field {
+  padding-top: 10px;
+  width: 100%;
+}
+
+.mat-mdc-card-header {
+  padding: 16px !important;
+}

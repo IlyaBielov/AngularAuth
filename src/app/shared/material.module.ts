@@ -5,6 +5,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatToolbar } from '@angular/material/toolbar';
 
 const modules = [
   MatCard,
@@ -21,7 +22,8 @@ const modules = [
   MatButton,
   MatCardActions,
   MatProgressSpinner,
-  MatError
+  MatError,
+  MatToolbar,
 ];
 
 @NgModule({
@@ -29,7 +31,7 @@ const modules = [
   exports: modules,
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', hideRequiredMarker: true } },
-    { provide: MAT_CARD_CONFIG, useValue: { appearance: 'outlined' } }
+    { provide: MAT_CARD_CONFIG, useValue: { appearance: 'outline' } }
   ]
 })
 export class MaterialModule {
