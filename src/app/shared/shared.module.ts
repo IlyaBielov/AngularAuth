@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthBtnComponent } from '@shared/forms/auth-btn/auth-btn.component';
 import { InputComponent } from '@shared/forms/input/input.component';
 import { PasswordComponent } from '@shared/forms/password/password.component';
+import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
 
 const modules = [
   CommonModule,
@@ -11,7 +12,8 @@ const modules = [
   ReactiveFormsModule,
   AuthBtnComponent,
   InputComponent,
-  PasswordComponent
+  PasswordComponent,
+  LiveBgComponent
 ];
 
 @NgModule({
