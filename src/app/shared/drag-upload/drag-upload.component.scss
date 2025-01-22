@@ -1,0 +1,10 @@
+.drop-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--mat-sys-primary-container);
+  box-shadow: inset 0 0 22px 0 rgba(0, 0, 0, 0.34);
+}
