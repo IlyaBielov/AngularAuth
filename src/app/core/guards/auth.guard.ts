@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectIsAuthenticated } from '@state/auth/auth.selectors';
 import { map } from 'rxjs';
+import { GALLERY_PAGE, LOGIN_PAGE } from '../../app.routes';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const store = inject(Store);
@@ -12,14 +13,14 @@ export const authGuard: CanActivateFn = (route, state) => {
     map(isAuthenticated => {
       const targetUrl = state.url;
 
-      if (targetUrl === '/login' && isAuthenticated) {
-        router.navigate(['/images']);
+      if (targetUrl === `/${LOGIN_PAGE}` && isAuthenticated) {
+        router.navigate([`/${GALLERY_PAGE}`]);
 
         return false;
       }
 
-      if (!isAuthenticated && targetUrl !== '/login') {
-        router.navigate(['/login']);
+      if (!isAuthenticated && targetUrl !== `/${LOGIN_PAGE}`) {
+        router.navigate([`/${LOGIN_PAGE}`]);
 
         return false;
       }

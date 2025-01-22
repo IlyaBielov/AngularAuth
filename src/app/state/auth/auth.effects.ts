@@ -5,6 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { login, loginFailure, loginSuccess, logout, setAuthenticated } from '@state/auth/auth.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { GALLERY_PAGE, LOGIN_PAGE } from '../../app.routes';
 
 @Injectable()
 export class AuthEffects {
@@ -29,7 +30,7 @@ export class AuthEffects {
         const expiryDate = new Date();
         expiryDate.setHours(expiryDate.getHours() + 1);
         this.document.cookie = `auth_token=${token}; expires=${expiryDate.toUTCString()}; path=/`;
-        this.router.navigate(['/images']);
+        this.router.navigate([`/${GALLERY_PAGE}`]);
 
         return setAuthenticated({ isAuthenticated: true });
       })
@@ -49,7 +50,7 @@ export class AuthEffects {
       ofType(logout),
       map(() => {
         this.document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
-        this.router.navigate(['/login']);
+        this.router.navigate([`/${LOGIN_PAGE}`]);
 
         return setAuthenticated({ isAuthenticated: false });
       })));
