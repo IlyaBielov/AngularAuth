@@ -29,6 +29,8 @@ export class AuthEffects {
         const expiryDate = new Date();
         expiryDate.setHours(expiryDate.getHours() + 1);
         this.document.cookie = `auth_token=${token}; expires=${expiryDate.toUTCString()}; path=/`;
+        this.router.navigate(['/images']);
+
         return setAuthenticated({ isAuthenticated: true });
       })
     ));
@@ -38,6 +40,7 @@ export class AuthEffects {
       ofType(loginFailure),
       map(({ error }) => {
         this.document.cookie = `auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+
         return setAuthenticated({ isAuthenticated: false });
       })));
 
@@ -47,6 +50,7 @@ export class AuthEffects {
       map(() => {
         this.document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
         this.router.navigate(['/']);
+
         return setAuthenticated({ isAuthenticated: false });
       })));
 
