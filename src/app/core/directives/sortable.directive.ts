@@ -1,11 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, inject, Input } from '@angular/core';
 import Sortable from 'sortablejs';
+import { ImageFile } from '@core/models/image-file';
 
 @Directive({
   selector: '[appSortable]',
 })
 export class SortableDirective implements AfterViewInit {
-  @Input() sortableData: string[];
+  @Input() sortableData: ImageFile[];
 
   private el = inject(ElementRef);
 

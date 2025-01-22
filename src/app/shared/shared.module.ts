@@ -5,6 +5,8 @@ import { AuthBtnComponent } from '@shared/forms/auth-btn/auth-btn.component';
 import { InputComponent } from '@shared/forms/input/input.component';
 import { PasswordComponent } from '@shared/forms/password/password.component';
 import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
+import { ImageGalleryComponent } from '@shared/image-gallery/image-gallery.component';
+import { DragUploadComponent } from '@shared/drag-upload/drag-upload.component';
 
 const modules = [
   CommonModule,
@@ -13,7 +15,9 @@ const modules = [
   AuthBtnComponent,
   InputComponent,
   PasswordComponent,
-  LiveBgComponent
+  LiveBgComponent,
+  ImageGalleryComponent,
+  DragUploadComponent
 ];
 
 @NgModule({

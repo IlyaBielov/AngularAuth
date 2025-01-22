@@ -1,0 +1,15 @@
+.sortable-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 1rem;
+}
+
+.gallery-item {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: var(--mat-sys-level1);
+  object-fit: cover;
+  object-position: center;
+}

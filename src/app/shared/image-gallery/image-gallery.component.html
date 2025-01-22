@@ -1,0 +1,5 @@
+<div class="sortable-grid" appSortable [sortableData]="images()">
+  @for (image of images(); track image; let idx = $index) {
+    <img width="250" height="250" class="gallery-item" [src]="image.url" [alt]="'gallery item ' + idx" loading="lazy">
+  }
+</div>

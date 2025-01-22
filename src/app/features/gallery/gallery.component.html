@@ -1,0 +1,17 @@
+<div class="images-container">
+  <mat-card>
+    <mat-card-content>
+      <div class="card-footer">
+        <app-drag-upload (onUpload)="onUpload($event)"/>
+      </div>
+
+      @if (images()) {
+        <hr>
+      }
+
+      <app-image-gallery [images]="images()"/>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

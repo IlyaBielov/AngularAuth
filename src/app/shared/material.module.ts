@@ -31,7 +31,7 @@ const modules = [
   exports: modules,
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', hideRequiredMarker: true } },
-    { provide: MAT_CARD_CONFIG, useValue: { appearance: 'outline' } }
+    { provide: MAT_CARD_CONFIG, useValue: { appearance: 'outlined' } }
   ]
 })
 export class MaterialModule {
