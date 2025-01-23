@@ -1,23 +1,38 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { MaterialModule } from '@shared/material.module';
-import { SharedModule } from '@shared/shared.module';
-import { FormBuilder, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { login } from '@state/auth/auth.actions';
-import { selectAuthError, selectIsLoadingAuth } from '@state/auth/auth.selectors';
+import { selectAuthError, selectIsLoadingAuth } from '@core/state/auth/auth.selectors';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { login } from '@core/state/auth/auth.actions';
+import { MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { InputComponent } from '@shared/forms/input/input.component';
+import { PasswordComponent } from '@shared/forms/password/password.component';
+import { AuthBtnComponent } from '@shared/forms/auth-btn/auth-btn.component';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [SharedModule, MaterialModule],
+  imports: [
+    ReactiveFormsModule,
+    MatCard,
+    MatCardTitle,
+    MatCardContent,
+    MatCardHeader,
+    MatCardFooter,
+    MatCardActions,
+    InputComponent,
+    PasswordComponent,
+    AuthBtnComponent,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
   store = inject(Store);
+  destroyRef = inject(DestroyRef);
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -28,6 +43,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(selectAuthError)
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(error => {
         this.loginForm.controls['username'].setErrors({ authError: error });
         this.loginForm.controls['password'].setErrors({ authError: error });
@@ -37,7 +53,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.store.dispatch(login({ username, password }));
+      this.store.dispatch(() => login({ username, password }));
     }
   }
 }

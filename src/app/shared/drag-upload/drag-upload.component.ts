@@ -4,9 +4,7 @@ import { ImageFile } from '@core/models/image-file';
 
 @Component({
   selector: 'app-drag-upload',
-  imports: [
-    ImageDragUploadDirective
-  ],
+  imports: [ImageDragUploadDirective],
   templateUrl: './drag-upload.component.html',
   styleUrl: './drag-upload.component.scss',
   standalone: true,

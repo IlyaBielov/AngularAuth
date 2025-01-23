@@ -1,7 +1,7 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectIsAuthenticated } from '@state/auth/auth.selectors';
+import { selectIsAuthenticated } from '@core/state/auth/auth.selectors';
 import { map } from 'rxjs';
 import { GALLERY_PAGE, LOGIN_PAGE } from '../../app.routes';
 

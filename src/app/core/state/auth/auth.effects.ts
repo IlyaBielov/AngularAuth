@@ -1,17 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
 import { AuthService } from '@core/services/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { login, loginFailure, loginSuccess, logout, setAuthenticated } from '@state/auth/auth.actions';
+import { login, loginFailure, loginSuccess, logout, setAuthenticated } from '@core/state/auth/auth.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { GALLERY_PAGE, LOGIN_PAGE } from '../../app.routes';
+import { GALLERY_PAGE, LOGIN_PAGE } from '../../../app.routes';
+import { TokenService } from '@core/services/token.service';
 
 @Injectable()
 export class AuthEffects {
   actions$ = inject(Actions);
   authService = inject(AuthService);
-  document = inject(DOCUMENT);
+  tokenService = inject(TokenService);
   router = inject(Router);
 
   login$ = createEffect(() =>
@@ -27,9 +27,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(loginSuccess),
       map(({ token }) => {
-        const expiryDate = new Date();
-        expiryDate.setHours(expiryDate.getHours() + 1);
-        this.document.cookie = `auth_token=${token}; expires=${expiryDate.toUTCString()}; path=/`;
+        this.tokenService.setToken(token);
         this.router.navigate([`/${GALLERY_PAGE}`]);
 
         return setAuthenticated({ isAuthenticated: true });
@@ -40,7 +38,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(loginFailure),
       map(({ error }) => {
-        this.document.cookie = `auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+        this.tokenService.removeToken();
 
         return setAuthenticated({ isAuthenticated: false });
       })));
@@ -49,7 +47,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(logout),
       map(() => {
-        this.document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+        this.tokenService.removeToken();
         this.router.navigate([`/${LOGIN_PAGE}`]);
 
         return setAuthenticated({ isAuthenticated: false });
