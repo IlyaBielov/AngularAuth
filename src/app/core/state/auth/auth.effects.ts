@@ -37,7 +37,7 @@ export class AuthEffects {
   loginFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginFailure),
-      map(({ error }) => {
+      map(() => {
         this.tokenService.removeToken();
 
         return setAuthenticated({ isAuthenticated: false });
