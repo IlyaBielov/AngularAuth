@@ -25,17 +25,16 @@ export class ImageDragUploadDirective {
     event.preventDefault();
     event.stopPropagation();
 
-    let fileList = event.dataTransfer.files;
+    const fileList = event.dataTransfer.files;
 
-    for (let i = 0; i < fileList.length; i++) {
-      const file = fileList[i];
+    for (const file of fileList) {
       if (file.type.startsWith('image/')) {
         const url = this.sanitizer.bypassSecurityTrustUrl(window['URL'].createObjectURL(file));
 
         // Simple way of fixing bug of the existing files in gallery
         const find = this.files.find((fileItem) => {
           const k = 40; // length of the hashed name of the file
-          return file.name.length === k && (fileItem.file.size === file.size);
+          return file.name.length === k && fileItem.file.size === file.size;
         });
 
         if (!find) {

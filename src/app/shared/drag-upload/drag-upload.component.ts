@@ -11,5 +11,5 @@ import { ImageFile } from '@core/models/image-file';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DragUploadComponent {
-  onUpload = output<ImageFile>();
+  upload = output<ImageFile>();
 }

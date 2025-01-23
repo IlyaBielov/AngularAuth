@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-content>
       <div class="card-footer">
-        <app-drag-upload (onUpload)="onUpload($event)"/>
+        <app-drag-upload (upload)="onUpload($event)"/>
       </div>
 
       @if (images()) {
