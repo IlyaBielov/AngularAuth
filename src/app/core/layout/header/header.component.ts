@@ -15,6 +15,6 @@ export class HeaderComponent {
   store = inject(Store);
 
   logout() {
-    this.store.dispatch(logout());
+    this.store.dispatch(() => logout());
   }
 }

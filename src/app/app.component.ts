@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     const hasToken = this.getAuthTokenFromCookies() !== null;
 
     if (!isAuthenticated || !hasToken) {
-      this.store.dispatch(logout());
+      this.store.dispatch(() => logout());
     } else {
-      this.store.dispatch(setAuthenticated({ isAuthenticated: true }));
+      this.store.dispatch(() => setAuthenticated({ isAuthenticated: true }));
     }
   }
 
