@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { logout, setAuthenticated } from '@state/auth/auth.actions';
 import { selectIsAuthenticated } from '@state/auth/auth.selectors';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '@core/layout/header/header.component';
+import { HeaderComponent } from '@shared/header/header.component';
 import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
 
 @Component({

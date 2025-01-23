@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectAuthError, selectIsLoadingAuth } from '@state/auth/auth.selectors';
+import { selectAuthError, selectIsLoadingAuth } from '@core/state/auth/auth.selectors';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { login } from '@state/auth/auth.actions';
+import { login } from '@core/state/auth/auth.actions';
 import { MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { InputComponent } from '@shared/forms/input/input.component';
 import { PasswordComponent } from '@shared/forms/password/password.component';

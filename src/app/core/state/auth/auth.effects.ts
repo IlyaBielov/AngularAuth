@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { login, loginFailure, loginSuccess, logout, setAuthenticated } from '@state/auth/auth.actions';
+import { login, loginFailure, loginSuccess, logout, setAuthenticated } from '@core/state/auth/auth.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { GALLERY_PAGE, LOGIN_PAGE } from '../../app.routes';
+import { GALLERY_PAGE, LOGIN_PAGE } from '../../../app.routes';
 import { TokenService } from '@core/services/token.service';
 
 @Injectable()
@@ -39,7 +39,7 @@ export class AuthEffects {
       ofType(loginFailure),
       map(({ error }) => {
         this.tokenService.removeToken();
-        
+
         return setAuthenticated({ isAuthenticated: false });
       })));
 

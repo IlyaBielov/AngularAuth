@@ -5,10 +5,18 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@features/*": ["src/app/features/*"],
-      "@state/*": ["src/app/state/*"]
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@features/*": [
+        "src/app/features/*"
+      ],
+      "@state/*": [
+        "src/app/core/state/*"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "strict": false,
