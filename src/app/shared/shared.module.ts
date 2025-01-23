@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthBtnComponent } from '@shared/forms/auth-btn/auth-btn.component';
 import { InputComponent } from '@shared/forms/input/input.component';
@@ -7,6 +7,7 @@ import { PasswordComponent } from '@shared/forms/password/password.component';
 import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
 import { ImageGalleryComponent } from '@shared/image-gallery/image-gallery.component';
 import { DragUploadComponent } from '@shared/drag-upload/drag-upload.component';
+import { AvatarComponent } from '@shared/avatar/avatar.component';
 
 const modules = [
   CommonModule,
@@ -17,7 +18,9 @@ const modules = [
   PasswordComponent,
   LiveBgComponent,
   ImageGalleryComponent,
-  DragUploadComponent
+  DragUploadComponent,
+  NgOptimizedImage,
+  AvatarComponent,
 ];
 
 @NgModule({
