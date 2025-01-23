@@ -4,12 +4,13 @@ import { Store } from '@ngrx/store';
 import { logout, setAuthenticated } from '@state/auth/auth.actions';
 import { HeaderComponent } from '@core/layout/header/header.component';
 import { selectIsAuthenticated } from '@state/auth/auth.selectors';
+import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, LiveBgComponent],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
