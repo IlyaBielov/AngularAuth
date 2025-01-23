@@ -1,14 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MaterialModule } from '@shared/material.module';
 import { Store } from '@ngrx/store';
 import { logout } from '@state/auth/auth.actions';
-import { SharedModule } from '@shared/shared.module';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatButton } from '@angular/material/button';
+import { AvatarComponent } from '@shared/avatar/avatar.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  imports: [SharedModule, MaterialModule],
+  imports: [
+    MatToolbar,
+    MatButton,
+    AvatarComponent,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

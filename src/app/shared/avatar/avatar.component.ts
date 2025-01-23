@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MaterialModule } from '@shared/material.module';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-avatar',
-  imports: [MaterialModule, NgOptimizedImage],
+  imports: [NgOptimizedImage],
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
   standalone: true,

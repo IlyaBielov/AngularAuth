@@ -1,16 +1,20 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, Signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { logout, setAuthenticated } from '@state/auth/auth.actions';
-import { HeaderComponent } from '@core/layout/header/header.component';
 import { selectIsAuthenticated } from '@state/auth/auth.selectors';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '@core/layout/header/header.component';
 import { LiveBgComponent } from '@shared/live-bg/live-bg.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [RouterOutlet, HeaderComponent, LiveBgComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    LiveBgComponent,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

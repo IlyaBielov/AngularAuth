@@ -1,18 +1,31 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { MaterialModule } from '@shared/material.module';
-import { SharedModule } from '@shared/shared.module';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectAuthError, selectIsLoadingAuth } from '@state/auth/auth.selectors';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { login } from '@state/auth/auth.actions';
+import { MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { InputComponent } from '@shared/forms/input/input.component';
+import { PasswordComponent } from '@shared/forms/password/password.component';
+import { AuthBtnComponent } from '@shared/forms/auth-btn/auth-btn.component';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [SharedModule, MaterialModule],
+  imports: [
+    ReactiveFormsModule,
+    MatCard,
+    MatCardTitle,
+    MatCardContent,
+    MatCardHeader,
+    MatCardFooter,
+    MatCardActions,
+    InputComponent,
+    PasswordComponent,
+    AuthBtnComponent,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
