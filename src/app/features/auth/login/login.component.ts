@@ -19,6 +19,7 @@ import { login } from '@state/auth/auth.actions';
 export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
   store = inject(Store);
+  destroyRef = inject(DestroyRef);
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(selectAuthError)
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(error => {
         this.loginForm.controls['username'].setErrors({ authError: error });
         this.loginForm.controls['password'].setErrors({ authError: error });
